@@ -41,7 +41,6 @@ export default function Navbar() {
 
       {/* Right side - Buttons */}
       <div className="flex items-center gap-2 rounded-sm">
-        {/* Dropdown Menu (comes FIRST) */}
         <DropdownMenu
           trigger={
             <div className="cursor-pointer">
@@ -51,8 +50,6 @@ export default function Navbar() {
           items={dropdownItems}
           align="right"
         />
-
-        {/* New Chat Button (comes AFTER) */}
         <button className="flex items-center gap-2 px-3 py-2 bg-[#38b9ff] text-white rounded-lg transition-colors duration-200 shadow-sm cursor-pointer">
           <SparklesIcon className="h-4 w-4 hover:animate-sparkle" />
           <span className="font-bold">New Chat</span>

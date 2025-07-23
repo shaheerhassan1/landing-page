@@ -3,32 +3,33 @@
 import { useState, useRef, useEffect } from "react";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 
-type DropdownItem = {
-  label: string;
-  icon?: React.ReactNode;
-  onClick?: () => void;
-};
+/**
+ * @typedef {Object} DropdownItem
+ * @property {string} label
+ * @property {React.ReactNode} [icon]
+ * @property {() => void} [onClick]
+ */
 
-type DropdownMenuProps = {
-  trigger: React.ReactNode;
-  items: DropdownItem[];
-  align?: "left" | "right";
-};
+/**
+ * @typedef {Object} DropdownMenuProps
+ * @property {React.ReactNode} trigger
+ * @property {DropdownItem[]} items
+ * @property {"left" | "right"} [align]
+ */
 
 export default function DropdownMenu({
   trigger,
   items,
   align = "left",
-}: DropdownMenuProps) {
+}) {
   const [isOpen, setIsOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const dropdownRef = useRef(null);
 
-  // Close dropdown when clicking outside
   useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
+    function handleClickOutside(event) {
       if (
         dropdownRef.current &&
-        !dropdownRef.current.contains(event.target as Node)
+        !dropdownRef.current.contains(event.target)
       ) {
         setIsOpen(false);
       }
@@ -48,16 +49,18 @@ export default function DropdownMenu({
         >
           {trigger}
           <ChevronDownIcon
-            className={`h-4 w-4 transition-transform ${isOpen ? "rotate-180" : ""
-              }`}
+            className={`h-4 w-4 transition-transform ${
+              isOpen ? "rotate-270" : ""
+            }`}
           />
         </button>
       </div>
 
       {isOpen && (
         <div
-          className={`absolute ${align === "right" ? "right-0" : "left-0"
-            } mt-2 w-45 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-neutral-500 ring-opacity-1 focus:outline-none z-50`}
+          className={`absolute ${
+            align === "right" ? "right-0" : "left-0"
+          } mt-2 w-45 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-neutral-500 ring-opacity-1 focus:outline-none z-50`}
         >
           <div className="py-1">
             {items.map((item, index) => (

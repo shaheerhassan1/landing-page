@@ -3,9 +3,8 @@
 import { useState } from "react";
 
 export default function Sidebar() {
-  // Set first icon (index 0) as active by default
-  const [activeIcon, setActiveIcon] = useState<number>(0);
-  const [hoveredIcon, setHoveredIcon] = useState<number | null>(null);
+  const [activeIcon, setActiveIcon] = useState(0);
+  const [hoveredIcon, setHoveredIcon] = useState(null);
 
   const icons = [
     {
@@ -25,14 +24,19 @@ export default function Sidebar() {
   return (
     <div className="flex flex-col">
       <div className="">
-        <img src="/bg.png" alt="" className="w-13 rounded-3xl ml-1 mt-2 mb-2 opacity-90" />
+        <img
+          src="/bg.png"
+          alt=""
+          className="w-13 rounded-3xl ml-1 mt-2 mb-2 opacity-90"
+        />
       </div>
       <aside className="w-14 bg-white h-auto flex flex-col items-center py-4 space-y-2 rounded-2xl ml-1">
         {icons.map((icon, index) => (
           <div
-            key={index}
-            className={`p-2 rounded-lg transition-all duration-400 cursor-pointer ${hoveredIcon === index ? "bg-neutral-200 scale-110" : ""
-              } ${activeIcon === index ? "bg-blue-100" : ""}`}
+          key={index}
+            className={`p-2 rounded-lg transition-all duration-400 cursor-pointer ${
+              hoveredIcon === index ? "bg-neutral-200 scale-110" : ""
+            } ${activeIcon === index ? "bg-blue-100" : ""}`}
             onMouseEnter={() => setHoveredIcon(index)}
             onMouseLeave={() => setHoveredIcon(null)}
             onClick={() => setActiveIcon(index)}
@@ -41,8 +45,9 @@ export default function Sidebar() {
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               fill="currentColor"
-              className={`size-4 transition-all duration-400 ${activeIcon === index ? "text-blue-600" : "text-gray-900"
-                } ${hoveredIcon === index ? "scale-110" : ""}`}
+              className={`size-4 transition-all duration-400 ${
+                activeIcon === index ? "text-blue-600" : "text-gray-900"
+              } ${hoveredIcon === index ? "scale-110" : ""}`}
             >
               <path fillRule="evenodd" d={icon.path} clipRule="evenodd" />
             </svg>
