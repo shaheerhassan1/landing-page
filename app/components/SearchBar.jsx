@@ -14,24 +14,22 @@ export default function SearchBar() {
 
   return (
     <div className="fixed bottom-5 border-gray-200 p-4 items-center flex flex-col left-18 right-0">
-      <form onSubmit={handleSubmit} className="font-sm">
-        {/* Input field */}
+      <form onSubmit={handleSubmit} className="font-sm mr-2">
         <div className="relative flex items-center font-sm text-[14px]">
           <input
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Ask me anything..."
-            className="w-[700px] h-[48px] p-4 pr-12 pl-10 rounded-xl border border-gray-200 bg-white placeholder:opacity-25"
+            className="w-[83vw] h-[48px] p-4 pr-12 pl-10 rounded-xl border border-gray-200 bg-white placeholder:opacity-25"
           />
           <button type="button" className="absolute left-4">
             <Link className="h-4 w-4 cursor-pointer" color="grey" />
           </button>
-          {/* Send button */}
           <button
             type="submit"
             disabled={!query.trim()}
-            className="absolute right-2 m p-1.5 rounded-lg w-auto bg-[#38b9ff] text-white flex items-center gap-2 font-semibold pl-3 pr-3"
+            className="absolute right-2 m p-1.5 rounded-lg w-auto bg-[#38b9ff] text-white flex items-center gap-2 font-semibold pr-3"
           >
             <Send className="h-4 w-4" /> Send
           </button>

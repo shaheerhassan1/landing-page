@@ -9,7 +9,7 @@ import {
   ArrowLeftOnRectangleIcon,
 } from "@heroicons/react/24/outline";
 
-export default function Navbar() {
+export default function Navbar({ onToggleSidebar }) {
   const user = {
     name: "CentraAI 2.0",
   };
@@ -34,12 +34,11 @@ export default function Navbar() {
 
   return (
     <nav className="bg-white px-3 py-3 flex justify-between items-center rounded-t-3xl text-[11px]">
-      {/* Left side - Menu icon */}
-      <button className="cursor-pointer">
+      {/* ✅ Sidebar toggle button */}
+      <button className="cursor-pointer" onClick={onToggleSidebar}>
         <PanelRight color="#b4b6b8" className="h-4 w-4 text-black" />
       </button>
 
-      {/* Right side - Buttons */}
       <div className="flex items-center gap-2 rounded-sm">
         <DropdownMenu
           trigger={

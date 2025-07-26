@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import React, { forwardRef } from "react";
 
-export default function Sidebar() {
+const Sidebar = forwardRef(({ isOpen }, ref) => {
   const [activeIcon, setActiveIcon] = useState(0);
   const [hoveredIcon, setHoveredIcon] = useState(null);
 
@@ -23,17 +24,18 @@ export default function Sidebar() {
 
   return (
     <div className="flex flex-col">
-      <div className="">
+      <aside
+        className={`transition-all duration-500 bg-white h-auto flex flex-col items-center py-4 space-y-2 rounded-2xl ml-1`}
+      >
         <img
           src="/bg.png"
           alt=""
           className="w-13 rounded-3xl ml-1 mt-2 mb-2 opacity-90"
         />
-      </div>
-      <aside className="w-14 bg-white h-auto flex flex-col items-center py-4 space-y-2 rounded-2xl ml-1">
+
         {icons.map((icon, index) => (
           <div
-          key={index}
+            key={index}
             className={`p-2 rounded-lg transition-all duration-400 cursor-pointer ${
               hoveredIcon === index ? "bg-neutral-200 scale-110" : ""
             } ${activeIcon === index ? "bg-blue-100" : ""}`}
@@ -53,10 +55,13 @@ export default function Sidebar() {
             </svg>
           </div>
         ))}
-        <div className="mt-[510px]">
+
+        <div className="absolute bottom-9">
           <img src="/image.png" alt="" className="w-9 rounded-[100%]" />
         </div>
       </aside>
     </div>
   );
-}
+});
+
+export default Sidebar;
