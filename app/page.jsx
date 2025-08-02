@@ -22,9 +22,9 @@ export default function Home() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
   return (
-    <div className="border-[1.5px] border-neutral-300 rounded-lg m-2 w-[99vw] h-[98vh] flex">
+    <div className="border-[1.5px] border-neutral-300 rounded-lg m-1 w-[99vw] h-[98vh] flex">
       <Sidebar />
-      <div className="border-[1.5px] border-neutral-200 rounded-lg w-[95vw] h-[96vh] mt-1.5 mr-1.5">
+      <div className="border-[1.5px] ml-1.5 border-neutral-200 rounded-lg w-[95vw] h-[96vh] mt-1.5 mr-1.5 sm:ml-1.5 md:w-[98vw] sm:w-full">
         <Navbar />
         <div className="bg-[#f5f6fa] h-[87vh] m-1 rounded-b-lg pt-[5%] items-center flex flex-col">
           <Image

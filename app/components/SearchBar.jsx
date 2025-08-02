@@ -13,7 +13,7 @@ export default function SearchBar() {
   };
 
   return (
-    <div className="fixed bottom-5 border-gray-200 p-4 items-center flex flex-col left-18 right-0">
+    <div className="fixed bottom-5 left-1/2 transform -translate-x-1/2 w-full px-4 sm:px-6 md:px-12 lg:px-72">
       <form onSubmit={handleSubmit} className="font-sm mr-2">
         <div className="relative flex items-center font-sm text-[14px]">
           <input
@@ -21,7 +21,7 @@ export default function SearchBar() {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Ask me anything..."
-            className="w-[83vw] h-[48px] p-4 pr-12 pl-10 rounded-xl border border-gray-200 bg-white placeholder:opacity-25"
+            className="w-full h-[48px] p-4 pr-12 pl-10 rounded-xl border border-gray-200 bg-white placeholder:opacity-25"
           />
           <button type="button" className="absolute left-4">
             <Link className="h-4 w-4 cursor-pointer" color="grey" />
@@ -35,7 +35,6 @@ export default function SearchBar() {
           </button>
         </div>
 
-        {/* Disclaimer text */}
         <p className="mt-2.5 mb-2 text-[12px] text-gray-500 text-center opacity-65">
           Centre may display inaccurate info, so please double check the
           response.{" "}

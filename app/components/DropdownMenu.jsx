@@ -17,20 +17,13 @@ import { ChevronDownIcon } from "@heroicons/react/24/outline";
  * @property {"left" | "right"} [align]
  */
 
-export default function DropdownMenu({
-  trigger,
-  items,
-  align = "left",
-}) {
+export default function DropdownMenu({ trigger, items, align = "left" }) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
 
   useEffect(() => {
     function handleClickOutside(event) {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target)
-      ) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setIsOpen(false);
       }
     }
@@ -50,7 +43,7 @@ export default function DropdownMenu({
           {trigger}
           <ChevronDownIcon
             className={`h-4 w-4 transition-transform ${
-              isOpen ? "rotate-270" : ""
+              isOpen ? "rotate-180" : ""
             }`}
           />
         </button>

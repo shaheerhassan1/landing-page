@@ -24,42 +24,44 @@ const Sidebar = forwardRef(({ isOpen }, ref) => {
 
   return (
     <div className="flex flex-col">
-      <aside
-        className={`transition-all duration-500 bg-white h-auto flex flex-col items-center py-4 space-y-2 rounded-2xl ml-1`}
-      >
-        <img
-          src="/bg.png"
-          alt=""
-          className="w-13 rounded-3xl ml-1 mt-2 mb-2 opacity-90"
-        />
+      <div className="hidden lg:block">
+        <aside
+          className={`transition-all duration-500 bg-white h-auto flex flex-col items-center py-4 space-y-2 rounded-2xl ml-1`}
+        >
+          <img
+            src="/bg.png"
+            alt=""
+            className="w-13 rounded-3xl ml-1 mt-2 mb-2 opacity-90"
+          />
 
-        {icons.map((icon, index) => (
-          <div
-            key={index}
-            className={`p-2 rounded-lg transition-all duration-400 cursor-pointer ${
-              hoveredIcon === index ? "bg-neutral-200 scale-110" : ""
-            } ${activeIcon === index ? "bg-blue-100" : ""}`}
-            onMouseEnter={() => setHoveredIcon(index)}
-            onMouseLeave={() => setHoveredIcon(null)}
-            onClick={() => setActiveIcon(index)}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              className={`size-4 transition-all duration-400 ${
-                activeIcon === index ? "text-blue-600" : "text-gray-900"
-              } ${hoveredIcon === index ? "scale-110" : ""}`}
+          {icons.map((icon, index) => (
+            <div
+              key={index}
+              className={`p-2 rounded-lg transition-all duration-400 cursor-pointer ${
+                hoveredIcon === index ? "bg-neutral-200 scale-110" : ""
+              } ${activeIcon === index ? "bg-blue-100" : ""}`}
+              onMouseEnter={() => setHoveredIcon(index)}
+              onMouseLeave={() => setHoveredIcon(null)}
+              onClick={() => setActiveIcon(index)}
             >
-              <path fillRule="evenodd" d={icon.path} clipRule="evenodd" />
-            </svg>
-          </div>
-        ))}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className={`size-4 transition-all duration-400 ${
+                  activeIcon === index ? "text-blue-600" : "text-gray-900"
+                } ${hoveredIcon === index ? "scale-110" : ""}`}
+              >
+                <path fillRule="evenodd" d={icon.path} clipRule="evenodd" />
+              </svg>
+            </div>
+          ))}
 
-        <div className="absolute bottom-9">
-          <img src="/image.png" alt="" className="w-9 rounded-[100%]" />
-        </div>
-      </aside>
+          <div className="absolute bottom-9">
+            <img src="/image.png" alt="" className="w-9 rounded-[100%]" />
+          </div>
+        </aside>
+      </div>
     </div>
   );
 });
