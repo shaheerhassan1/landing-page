@@ -83,12 +83,12 @@ export default function Navbar({ onToggleSidebar }) {
       {isOpen && (
         <div
           onClick={() => setIsOpen(false)}
-          className="fixed inset-0 bg-opacity-50 z-40 transition-opacity duration-300"
+          className="fixed inset-0 bg-opacity-50 z-1 transition-opacity duration-300"
         />
       )}
 
       <div
-        className={`fixed top-0 left-0 h-full w-64 bg-white z-50 transform transition-transform duration-300 ease-in-out
+        className={`fixed top-0 left-0 h-full w-64 bg-white z-2 transform transition-transform duration-300 ease-in-out
     ${isOpen ? "translate-x-0" : "-translate-x-full"}`}
       >
         <div className="flex flex-col items-center gap-10 p-4">
