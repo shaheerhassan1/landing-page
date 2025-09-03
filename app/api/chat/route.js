@@ -1,8 +1,8 @@
-import ModelClient, { isUnexpected } from "@azure-rest/ai-inference";
-import { AzureKeyCredential } from "@azure/core-auth";
+import OpenAI from "openai";
 
-const endpoint = "https://models.inference.ai.azure.com"; 
-const model = "gpt-4o-mini";
+const client = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+});
 
 export async function POST(req) {
   try {
@@ -10,34 +10,24 @@ export async function POST(req) {
 
     console.log("Incoming message:", message);
 
-    const client = ModelClient(
-      endpoint,
-      new AzureKeyCredential(process.env.GITHUB_TOKEN)
-    );
-
-    const response = await client.path("/chat/completions").post({
-      body: {
-        messages: [
-          { role: "system", content: "You are a helpful assistant." },
-          { role: "user", content: message }
-        ],
-        model
-      }
+    const response = await client.chat.completions.create({
+       model: "gpt-4.1-mini", 
+      messages: [
+        { role: "user", content: message },
+      ],
     });
 
-    if (isUnexpected(response)) {
-      console.error("API Unexpected Error:", response.body.error);
-      throw response.body.error;
-    }
-
-    console.log("API Response:", response.body);
+    console.log("API Response:", response);
 
     return new Response(
-      JSON.stringify({ reply: response.body.choices[0].message.content }),
+      JSON.stringify({ reply: response.choices[0].message.content }),
       { status: 200 }
     );
   } catch (err) {
     console.error("API Error Details:", err);
-    return new Response(JSON.stringify({ reply: "API Error!" }), { status: 500 });
+    return new Response(
+      JSON.stringify({ reply: "API Error!", details: String(err) }),
+      { status: 500 }
+    );
   }
 }
